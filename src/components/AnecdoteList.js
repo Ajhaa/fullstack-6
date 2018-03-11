@@ -6,10 +6,7 @@ import { notify } from '../reducers/notificationReducer'
 class AnecdoteList extends React.Component {
   handleVote = async (anecdote) => {
     this.props.vote(anecdote.id)
-    this.props.notify('voted "' + anecdote.content + '"')
-    setTimeout(() => {
-      this.props.notify('')
-    }, 5000)
+    this.props.notify(`voted "${anecdote.content}"`, 4)
   }
 
   render() {
