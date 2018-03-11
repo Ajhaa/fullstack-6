@@ -41,6 +41,7 @@
         "no-unused-vars": "off",
         "eqeqeq": "error",
         "no-case-declarations": "off",
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "no-console": "off"
     }
 }
