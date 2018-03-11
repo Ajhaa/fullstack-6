@@ -19,7 +19,7 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (store = initialState, action) => {
+const anecdoteReducer = (store = initialState, action) => {
   switch (action.type) {
     case 'VOTE':
       const id = action.data.id
@@ -27,16 +27,18 @@ const reducer = (store = initialState, action) => {
       const voted = store.find(a => a.id === id)
       return [...old, { ...voted, votes: voted.votes + 1 }]
 
-    case 'NEW_BLOG':
+    case 'NEW_ANECDOTE':
+      console.log('LUODAAT UUSI', action.data)
+      console.log('STORE:', store)
       return [...store, action.data]
     default:
       return store
   }
 }
 
-export const blogCreation = (content) => {
+export const anecdoteCreation = (content) => {
   return {
-    type: 'NEW_BLOG',
+    type: 'NEW_ANECDOTE',
     data: {
       content,
       id: getId(),
@@ -52,4 +54,4 @@ export const vote = (id) => {
   }
 }
 
-export default reducer
+export default anecdoteReducer
