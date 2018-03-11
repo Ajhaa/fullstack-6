@@ -1,8 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import anecdoteService from '../services/anecdotes'
 import { anecdoteCreation } from '../reducers/anecdoteReducer'
 import { notify } from '../reducers/notificationReducer'
+
 class AnecdoteForm extends React.Component {
 
   handleSubmit = async (e) => {
@@ -10,10 +11,10 @@ class AnecdoteForm extends React.Component {
     const content = e.target.anecdote.value
     e.target.anecdote.value = ''
     const newAnecdote = await anecdoteService.createNew(content)
-    this.props.store.dispatch(anecdoteCreation(newAnecdote))
-    this.props.store.dispatch(notify('created anecdote "' + content + '"'))
+    this.props.anecdoteCreation(newAnecdote)
+    this.props.notify('created anecdote "' + content + '"')
     setTimeout(() => {
-      this.props.store.dispatch(notify(''))
+      this.props.notify('')
     }, 5000)
   }
   render() {
@@ -29,4 +30,13 @@ class AnecdoteForm extends React.Component {
   }
 }
 
-export default AnecdoteForm
+const mapDispatchToProps = {
+  anecdoteCreation, notify
+}
+
+const connected = connect(
+  null,
+  mapDispatchToProps
+)(AnecdoteForm)
+
+export default connected
