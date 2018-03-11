@@ -1,13 +1,20 @@
-const initialNotification = {
-  message: 'Hello World'
-}
+const initialNotification = ''
 
 const notificationReducer = (state = initialNotification, action) => {
   switch (action.type) {
     case 'CHANGE_NOTIFICATION':
-      return action.data
+      console.log('actionData', action.message)
+      return action.message
     default:
-      return state  
+      return state
+  }
+}
+
+export const notify = (message) => {
+  console.log('Message', message)
+  return {
+    type: 'CHANGE_NOTIFICATION',
+    message
   }
 }
 
