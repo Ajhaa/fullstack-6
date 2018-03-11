@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import anecdoteService from '../services/anecdotes'
 import { vote } from '../reducers/anecdoteReducer'
 import { notify } from '../reducers/notificationReducer'
 
@@ -15,6 +14,7 @@ class AnecdoteList extends React.Component {
 
   render() {
     const { anecdotes, filter } = this.props
+    console.log('ANECDOTES: ', anecdotes)
     const filtered = anecdotes.filter(a => a.content.includes(filter))
     return (
       <div>

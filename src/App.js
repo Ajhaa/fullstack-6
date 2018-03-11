@@ -8,7 +8,7 @@ import { initAnecdotes } from './reducers/anecdoteReducer'
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.initAnecdotes
+    this.props.initAnecdotes()
   }
   render() {
     return (
